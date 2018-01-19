@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/tops.css">
+</head>
+<body>
+<nav>            
+    <!-- 控制菜单 -->
+    <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+    </div>            
+    <!-- 菜单 -->
+    <ul class="nav-list">
+        <li>
+            <a href="" class="active">首页<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">不断学习</a></li>
+                <li><a href="">不断进步</a></li>
+            </ul>
+        </li>
+        <li><a href="">我是<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">掌握H5</a></li>
+                <li><a href="">牢记JS</a></li>
+            </ul>
+        </li>
+        <li><a href="">一个<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">熟练jQuery</a></li>
+                <li><a href="">不忘react</a></li>
+            </ul>
+        </li>
+        <li><a href="">热爱<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">还有angular</a></li>
+                <li><a href="">加上Vue</a></li>
+            </ul>
+        </li>
+        <li><a href="">Web<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">社会主义</a></li>
+                <li><a href="">核心价值</a></li>
+            </ul>
+        </li>
+        <li><a href="">的有<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">观有什么</a></li>
+                <li><a href="">文明和谐</a></li>
+            </ul>
+        </li>
+        <li><a href="">为青<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">富强民主</a></li>
+                <li><a href="">自由平等</a></li>
+            </ul>
+        </li>
+        <li><a href="">年 !<div class="carect"></div></a>
+            <ul class="menu">
+                <li><a href="">公正法治</a></li>
+                <li><a href="">爱国敬业</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<p>当窗口缩小时可以出现弹出层效果</p>
+<div id="to_top">我是一个热爱web的有为青年~</div>
+<div id="content">
+<form>
+    <table>
+        <tr>
+            <td>用户名：</td><td><input type="text" name="user"></td>
+        </tr>
+        <tr>
+            <td>密码：</td><td><input type="password" name="user"></td>
+        </tr>
+        <tr>
+            <td>确认密码：</td><td><input type="password" name="user"></td>
+        </tr>
+    </table>
+</form>   
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    $(document).click(function(){
+        $('.nav-list').removeClass('open');
+    });
+    $('.nav-menu,.nav-list').click(function(e){e.stopPropagation()});
+    $('nav').find('.nav-menu').click(function(e){
+        $('.nav-list').toggleClass('open');
+    });
+</script>
+
+<script type="text/javascript">
+     window.onload=function(){
+        var user=document.getElementsByName("user")[0];
+        user.focus();
+        user.onblur=function(){
+            if (this.parentNode.lastChild.nodeName=="SPAN") {
+                this.parentNode.removeChild(this.parentNode.lastChild)
+            };
+            if (this.value.length==0) {
+                var newspan = document.createElement('span');
+                newspan.innerHTML="用户名不能为空";
+                this.parentNode.appendChild(newspan);
+            }
+            else{
+                var newspan = document.createElement('span');
+                newspan.innerHTML="用户名可用";
+                this.parentNode.appendChild(newspan);
+            }
+        }
+
+        var password = document.getElementsByName("user")[1];
+        password.onblur=function(){
+            if (this.parentNode.lastChild.nodeName=="SPAN") {
+                this.parentNode.removeChild(this.parentNode.lastChild)
+            };
+            if (this.value.length==0) {
+                var newspan = document.createElement('span');
+                newspan.innerHTML="密码不能为空";
+                this.parentNode.appendChild(newspan);
+            }
+            else{
+                var newspan = document.createElement('span');
+                newspan.innerHTML="密码可用";
+                this.parentNode.appendChild(newspan);
+            }
+        }
+
+        var check_password = document.getElementsByName("user")[2];
+
+        check_password.onblur=function(){
+            if (this.parentNode.lastChild.nodeName=="SPAN") {
+                this.parentNode.removeChild(this.parentNode.lastChild)
+            };
+            if (this.value.length==0) {
+                var newspan = document.createElement('span');
+                newspan.innerHTML="密码不能为空";
+                this.parentNode.appendChild(newspan);
+            }
+            else if (this.value==password.value) {
+                var newspan = document.createElement('span');
+                newspan.innerHTML="密码可用";
+                this.parentNode.appendChild(newspan);
+            }
+            else{
+                var newspan = document.createElement('span');
+                newspan.innerHTML="两次密码不一致";
+                this.parentNode.appendChild(newspan);
+            }
+        }
+        var oTop = document.getElementById('to_top')
+        document.onmousemove = function(evt){
+            var oEvent = evt;
+            var scrolleft = document.body.scrollLeft;
+            var scrolltop = document.body.scrollTop;
+            oTop.style.left = oEvent.clientX + scrolleft + 10 + "px";
+            oTop.style.top = oEvent.clientY + scrolltop + 10 + "px";            
+        }    
+    }
+</script>   
+</body>
+</html>
